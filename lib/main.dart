@@ -2,20 +2,41 @@ import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/widgets/expenses.dart';
 
-var KColorScheme =
+var kColorScheme =
     ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 96, 59, 181));
+var kDarkColorScheme = ColorScheme.fromSeed(
+    brightness: Brightness.dark,
+    seedColor: const Color.fromARGB(255, 5, 99, 125));
 
 void main() {
   runApp(
     MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true,
+        colorScheme: kDarkColorScheme,
+        cardTheme: const CardTheme().copyWith(
+          color: kDarkColorScheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kDarkColorScheme.primaryContainer,
+            foregroundColor: kDarkColorScheme.onPrimaryContainer,
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
           useMaterial3: true,
-          colorScheme: KColorScheme,
+          colorScheme: kColorScheme,
           appBarTheme: const AppBarTheme().copyWith(
-              backgroundColor: KColorScheme.onPrimaryContainer,
-              foregroundColor: KColorScheme.primaryContainer),
+            backgroundColor: kColorScheme.onPrimaryContainer,
+            foregroundColor: kColorScheme.primaryContainer,
+          ),
           cardTheme: const CardTheme().copyWith(
-            color: KColorScheme.secondaryContainer,
+            color: kColorScheme.secondaryContainer,
             margin: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 8,
@@ -23,13 +44,13 @@ void main() {
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              backgroundColor: KColorScheme.primaryContainer,
+              backgroundColor: kColorScheme.primaryContainer,
             ),
           ),
           textTheme: ThemeData().textTheme.copyWith(
               titleLarge: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: KColorScheme.onSecondaryContainer,
+                  color: kColorScheme.onSecondaryContainer,
                   fontSize: 16))),
       home: const Expenses(),
     ),

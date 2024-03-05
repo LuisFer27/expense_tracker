@@ -14,7 +14,7 @@ class _NewExpenseState extends State<NewExpense> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
-  Category _selectedCategory = Category.insumos;
+  Category _selectedCategory = Category.ocio;
   // var _enteredTitle = '';
 
   // void _saveTitleInput(String inputValue) {
